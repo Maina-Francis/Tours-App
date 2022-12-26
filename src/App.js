@@ -11,9 +11,16 @@ function App() {
   // Fetch data from the api
   const fetchTours = async () => {
     setLoading(true);
-    const resp = await fetch(url);
-    const tours = await resp.json();
-    console.log(tours);
+
+    try {
+      const resp = await fetch(url);
+      const tours = await resp.json();
+      setLoading(false);
+      setTours(tours);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   // useEffect hook to render the tours
@@ -31,7 +38,7 @@ function App() {
 
   return (
     <main>
-      <Tours />
+      <Tours tours={tours} />
     </main>
   );
 }
