@@ -28,6 +28,12 @@ function App() {
     fetchTours();
   }, []);
 
+  // RemoveTour function
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   if (loading) {
     return (
       <main>
@@ -38,7 +44,7 @@ function App() {
 
   return (
     <main>
-      <Tours tours={tours} />
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 }

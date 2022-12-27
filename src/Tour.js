@@ -4,7 +4,7 @@ const Tour = (props) => {
   const [readMore, setReadMore] = useState(false);
 
   //   console.log(props);
-  const { id, name, info, image, price } = props;
+  const { id, name, info, image, price, removeTour } = props;
 
   return (
     <article className="single-tour">
@@ -23,7 +23,9 @@ const Tour = (props) => {
           </button>
         </p>
 
-        <button className="delete-btn">Not Interested</button>
+        <button className="delete-btn" onClick={() => removeTour(id)}>
+          Not Interested
+        </button>
       </footer>
     </article>
   );
